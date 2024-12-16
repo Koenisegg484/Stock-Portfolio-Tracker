@@ -1,0 +1,26 @@
+{% extends "stocksTracker/base.html" %}
+
+{% block content %}
+<h2>Portfolio Performance</h2>
+{% if current_value %}
+<p>Current Value: {{ current_value }}</p>
+<p>Initial Value: {{ initial_value }}</p>
+<p>Portfolio Gain/Loss: {{ portfolio_gain_loss }}%</p>
+<h3>Stock Performance</h3>
+<table>
+    <tr>
+        <th>Stock</th>
+        <th>Gain/Loss (%)</th>
+    </tr>
+    {% for stock, gain in gains.items %}
+    <tr>
+        <td>{{ stock }}</td>
+        <td>{{ gain }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Error: {{ error }}</p>
+{% endif %}
+<a href="{% url 'portfolio_details' %}">Back to Portfolio</a>
+{% endblock %}

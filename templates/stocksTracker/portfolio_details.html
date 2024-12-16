@@ -1,0 +1,22 @@
+{% extends "stocksTracker/base.html" %}
+
+{% block content %}
+<h2>Your Portfolio</h2>
+<p>Name: {{ portfolio.name }}</p>
+<p>Email: {{ portfolio.email }}</p>
+<p>Phone: {{ portfolio.phone }}</p>
+<table>
+    <tr>
+        <th>Stock</th>
+        <th>Shares</th>
+    </tr>
+    {% for stock in portfolio.stocks %}
+    <tr>
+        <td>{{ stock.stock }}</td>
+        <td>{{ stock.shares }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button onclick="location.href='{% url 'portfolio_details' %}'">Calculate Portfolio Value</button>
+<button onclick="location.href='{% url 'portfolio_performance' %}'">Calculate Performance</button>
+{% endblock %}

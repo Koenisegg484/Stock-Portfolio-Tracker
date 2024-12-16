@@ -1,0 +1,35 @@
+{% extends 'stocksTracker/base.html' %}
+
+{% block title %}Data Collection{% endblock %}
+
+{% block content %}
+    <h2>Click to Get Real-Time Data of 15 Stocks</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Go!</button>
+    </form>
+
+    {% if real_time_data %}
+        <h2>Real-Time Stock Data</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                    <th>Volume</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in real_time_data %}
+                    <tr>
+                        <td>{{ stock.symbol }}</td>
+                        <td>{{ stock.price }}</td>
+                        <td>{{ stock.volume }}</td>
+                        <td>{{ stock.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

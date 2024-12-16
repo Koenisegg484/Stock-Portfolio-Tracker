@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio Management{% endblock %}</title>
+    <style>
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .alert-container {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid red;
+            background-color: #fdd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portfolio Management</h1>
+        <nav>
+            <a href="{% url 'portfolio_form' %}">Create Portfolio</a>
+            <a href="{% url 'portfolio_summary' %}">Portfolio Summary</a>
+            <a href="{% url 'stock_signals' %}">Stock Signals</a>
+            <a href="{% url 'portfolio_details' %}">View Portfolio</a>
+            <a href="{% url 'run_simulation' %}">Run Simulation</a>
+        </nav>
+    </header>
+    {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Portfolio App</p>
+    </footer>
+</body>
+</html>

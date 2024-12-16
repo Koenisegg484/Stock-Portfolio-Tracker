@@ -1,0 +1,11 @@
+{% extends "stocksTracker/base.html" %}
+
+{% block content %}
+<h2>Portfolio Value</h2>
+{% if total_value %}
+<p>Total Portfolio Value: {{ total_value }}</p>
+{% else %}
+<p>Error: {{ error }}</p>
+{% endif %}
+<a href="{% url 'portfolio_details' %}">Back to Portfolio</a>
+{% endblock %}

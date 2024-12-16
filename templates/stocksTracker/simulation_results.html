@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Run Simulation Results{% endblock %}
+
+{% block content %}
+<h2>Run Simulation Results</h2>
+
+<div>
+    <p><strong>Final Capital:</strong> ${{ total_capital }}</p>
+    <p><strong>Portfolio Value:</strong> ${{ total_portfolio_value }}</p>
+    <p><strong>Total Value (Capital + Portfolio):</strong> ${{ total_capital|add:total_portfolio_value }}</p>
+</div>
+
+<h3>Trade History</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Stock</th>
+            <th>Action</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if full_trade_history %}
+            {% for trade in full_trade_history %}
+            <tr>
+                <td>{{ trade.date }}</td>
+                <td>{{ trade.stock }}</td>
+                <td>{{ trade.action }}</td>
+                <td>${{ trade.price }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4">No trades executed in this simulation.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

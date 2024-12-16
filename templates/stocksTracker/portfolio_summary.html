@@ -1,0 +1,15 @@
+{% extends 'stocksTracker/base.html' %}
+{% block title %}Portfolio Summary{% endblock %}
+{% block content %}
+    <h2>Portfolio Summary</h2>
+    <p>Initial Portfolio Value: ${{ initial_value }}</p>
+    <p>Current Portfolio Value: ${{ current_value }}</p>
+    <p>Total Portfolio Gain/Loss: {{ portfolio_gain_loss }}%</p>
+
+    <h3>Individual Stock Performance</h3>
+    <ul>
+        {% for stock, gain_loss in gains.items %}
+            <li>{{ stock }}: {{ gain_loss }}%</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

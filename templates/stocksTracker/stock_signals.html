@@ -1,0 +1,10 @@
+{% extends 'stocksTracker/base.html' %}
+{% block title %}Stock Signals{% endblock %}
+{% block content %}
+    <h2>Trade Signals</h2>
+    <ul>
+        {% for signal in signals %}
+            <li>{{ signal.stock }} - {{ signal.signal }} on {{ signal.date }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
